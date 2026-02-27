@@ -13,6 +13,9 @@ def main():
     print(f"The doubled square is: {doubled_result}")
     
     # add another usage of `square`
+    square_squared = square(result1)
+    print(f"The square of the square is: {square_squared}")
+
     
     
     # Exercise 2: Same calculation but with a function that just prints
@@ -20,6 +23,12 @@ def main():
     # We cannot capture the result from print_square for further use
     # This would cause an error:
     # cant_do_this = print_square(4)
+
+    base = 10
+    exponent = 2
+    result = print_power(base, exponent)
+    doubled = result * 2
+    print(f"{base} to the power of {exponent} is {result}, and doubled is {doubled}")
     
     # Exercise 3: Chaining calculations with return values
     result3 = add_then_multiply(3, 4, 2)
@@ -38,8 +47,9 @@ def main():
     
     # Contrast with just printing the information
     print("\nUsing void function:")
-    print_price_with_tax(price, tax_rate)
-    
+    price_total = print_price_with_tax(price, tax_rate)
+    print(f"The total price based on initial price ${price} and tax rate {tax_rate} is: ${price_total:.2f}")
+
     # Exercise 5: String manipulation
     name = "Python"
     greeting = create_greeting(name)
@@ -59,6 +69,13 @@ def main():
     print(f"Squared: {squared}")
     print(f"Cubed: {cubed}")
     print(f"Fourth power: {fourth_power}")
+
+
+    Celsius_to_Fahrenheit_result = Celsius_to_Fahrenheit(25)
+    print(f"25 degrees Celsius is {Celsius_to_Fahrenheit_result} degrees Fahrenheit.")
+    print_Celsius_to_Fahrenheit(25)
+
+    print(f"{Celsius_to_Fahrenheit_result} is {Celsius_to_Fahrenheit_result-32} degrees above freezing point in Fahrenheit.")
 
 
 # Functions that RETURN values
@@ -123,11 +140,25 @@ def print_price_with_tax(price, tax_rate):
     """
     tax = price * tax_rate
     total = price + tax
+    return total
+    ""
     print(f"Price: ${price}")
     print(f"Tax: ${tax}")
     print(f"Total: ${total}")
+    ""
     # The calculated values are inaccessible outside this function
 
+def print_power(base, exponent):
+    result = base ** exponent
+    return(result)
+
+def Celsius_to_Fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+def print_Celsius_to_Fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    print(f"{celsius} degrees Celsius is {fahrenheit} degrees Fahrenheit.")
 
 if __name__ == "__main__":
     main()
